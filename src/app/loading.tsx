@@ -1,0 +1,1 @@
+export default function Loading() { return <main className="container" style={{ minHeight: "50vh", display: "grid", placeItems: "center", color: "var(--green)" }}><p>Loading PRESOL Zambia...</p></main>; }

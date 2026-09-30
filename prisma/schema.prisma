@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ContactEnquiry {
+  id           String   @id @default(cuid())
+  fullName     String
+  organisation String?
+  email        String
+  telephone    String?
+  province     String?
+  district     String?
+  category     String
+  message      String
+  marketing    Boolean  @default(false)
+  serviceId    String?
+  service      Service? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  createdAt    DateTime @default(now())
+}
+
+model QuoteRequest {
+  id                    String   @id @default(cuid())
+  name                  String
+  email                 String
+  telephone             String?
+  organisation          String?
+  customerType          String
+  province              String?
+  district              String?
+  siteDescription       String?
+  serviceRequired       String?
+  projectDescription    String?
+  operatingHours        String?
+  existingSupply        String?
+  monthlySpendZmw       Decimal?
+  expectedTiming        String?
+  indicativeBudget      String?
+  supportingDocumentUrl String?
+  serviceId             String?
+  service               Service? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  createdAt             DateTime @default(now())
+}
+
+model Project {
+  id          String   @id @default(cuid())
+  name        String
+  district    String
+  status      String   @default("IN_DEVELOPMENT")
+  description String?
+  serviceId   String?
+  service     Service? @relation(fields: [serviceId], references: [id], onDelete: SetNull)
+  createdAt   DateTime @default(now())
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String
+  contactEnquiries ContactEnquiry[]
+  quoteRequests    QuoteRequest[]
+  projects         Project[]
+  createdAt   DateTime @default(now())
+}
+
+model TeamMember {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  imageUrl  String?
+  createdAt DateTime @default(now())
+}
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  title     String
+  imageUrl  String
+  label     String?
+  createdAt DateTime @default(now())
+}

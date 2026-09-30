@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: presol-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: presol
+      POSTGRES_PASSWORD: presol_dev_password
+      POSTGRES_DB: presol
+    ports:
+      - "5432:5432"
+    volumes:
+      - presol_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  presol_postgres_data:

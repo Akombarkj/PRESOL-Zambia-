@@ -1,0 +1,2 @@
+import { PageHero, ProjectsGrid, CTA } from "@/components/page-sections";
+export default function ProjectsPage() { return <><PageHero eyebrow="Project development" title="Projects taking shape across Eastern Province." intro="The following initiatives are projects in development. Their inclusion does not represent completion, operation, connection or a guaranteed timeline." backgroundImage="/image/14open.jpg"/><main className="container" style={{ padding: "5rem 0" }}><ProjectsGrid/></main><CTA/></>; }

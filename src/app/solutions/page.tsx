@@ -1,0 +1,2 @@
+import { PageHero, ServicesGrid, CTA } from "@/components/page-sections";
+export default function SolutionsPage() { return <><PageHero eyebrow="What we do" title="Renewable energy, grounded in the way you work." intro="Explore PRESOL Zambia's six core services for communities, businesses, institutions and project developers."/><main className="container" style={{ padding: "5rem 0" }}><ServicesGrid/></main><CTA/></>; }

@@ -1,0 +1,2 @@
+"use client";
+export default function Error({ reset }: { error: Error & { digest?: string }; reset: () => void }) { return <main className="container" style={{ minHeight: "50vh", display: "grid", placeItems: "center", textAlign: "center" }}><div><h1 style={{ color: "var(--green-deep)" }}>Something went wrong.</h1><p className="muted">Please try again or contact info@presol.co.zm.</p><button className="btn btn-primary" onClick={() => reset()}>Try again</button></div></main>; }
